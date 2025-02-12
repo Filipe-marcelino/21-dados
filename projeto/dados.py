@@ -1,6 +1,6 @@
 import random
 
-class jogador:
+class Jogador:
     def __init__(self,pontosplayer: int):
         self.pontosplayer = pontosplayer
 
@@ -10,7 +10,7 @@ class jogador:
         print(dados)
         print(self.pontosplayer)
 
-class adversário:
+class Adversario:
     def __init__(self,pontospc: int):
         self.pontospc = pontospc
 
@@ -18,13 +18,13 @@ class adversário:
         dadospc = random.randint(1,6)
         self.pontospc += dadospc
 
-player1 = jogador(0)
-player2 = adversário(0)
-rodada = str(input('Você deseja jogar um dado? s/n'))
+player1 = Jogador(0)
+player2 = Adversario(0)
+rodada = str(input('Você deseja jogar um dado (s/n)? '))
 while rodada.upper() == "S":
     player1.Jogar()
     player2.Jogar()
-    rodada = str(input('Você deseja jogar outro dado? s/n'))
+    rodada = str(input('Você deseja jogar outro dado (s/n)? '))
 
     if player1.pontosplayer >= 21:
         break
