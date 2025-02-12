@@ -20,17 +20,21 @@ class Adversario:
 
 player1 = Jogador(0)
 player2 = Adversario(0)
-rodada = str(input('Você deseja jogar um dado (s/n)? '))
+rodada = str(input('Você deseja jogar um dado? s/n'))
 while rodada.upper() == "S":
     player1.Jogar()
     player2.Jogar()
-    rodada = str(input('Você deseja jogar outro dado (s/n)? '))
-
     if player1.pontosplayer >= 21:
         break
+    rodada = str(input('Você deseja jogar outro dado? s/n'))
 
 if player1.pontosplayer == 21:
     print('Você venceu!!')
+
+elif player2.pontospc == 21:
+    print('Você perdeu')
+
+
 
 elif player2.pontospc == 21:
     print('Você perdeu')
