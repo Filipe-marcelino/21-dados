@@ -1,1 +1,25 @@
+O projeto deverá abordar os seguintes conceitos de P.O.O:
+
+Classe - 10 pontos
+Atributos e Métodos - 10 pontos
+Herança - 10 pontos
+Polimorfismo- 10 pontos
+
+Obrigatoriamente o projeto deve ter um arquivo main.py que irá iniciar a execução através do __main__
+Obrigatoriamente será avaliado a interface com usuário, ela pode retirar pontos.
+Exemplo: Por exemplo o jogo da forca espero uma interface similar a que está em anexo.
+
+Pontuação extra:
+Interface Gráfica: 15 pontos
+Tratamento de Exceção: 10 pontos
+Persistência de objetos com serialização: 15 pontos
+
+-------------------------------------------------------------------------------------------------------
+
+OBRIGATÓRIO:
+Classe - 10 pontos
+Atributos e Métodos - 10 pontos
+Herança - 10 pontos
+Polimorfismo - 10 pontos
+Iniciar execução através do __main__
 
