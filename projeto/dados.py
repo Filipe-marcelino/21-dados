@@ -1,63 +1,106 @@
 import random
 
-class Jogador:
-    def __init__(self,pontosplayer: int): # Atributo(s): pontosplayer (pontos dp jogador)
-        self.pontosplayer = pontosplayer
+class Jogador: # Classe Jogador
+    def __init__(self, nome:str): # Atributo(s): pontos (pontos dp jogador)
+        self.nome = nome
+        self.pontos = 0
 
     def Jogar(self): # Método Jogar do jogador
-        dados = random.randint(1,6)
-        self.pontosplayer += dados
-        print(f"Dados do player: {dados}")
-        print(f"Pontos do player: {self.pontosplayer}")
+        # ROLAGEM DE DADOS
+        dado = input('Que dado desejas rolar (d3, d6 ou d10)? ')
+        if dado == 'd3':
+            dado = random.randint(1,3)
 
-class Adversario: 
-    def __init__(self,pontospc: int): # Atributo(s): pontospc (pontos do pc)
-        self.pontospc = pontospc
+        elif dado == 'd6':
+            dado = random.randint(1,6) 
+            
+        elif dado == 'd10':
+            dado = random.randint(1,10)
 
-    def Jogar(self): # Método Jogar do pc
-        dadospc = random.randint(1,6)
-        self.pontospc += dadospc
-        print(f"Dados do pc: {dadospc}")
-        print(f"Pontos do pc: {self.pontospc}")
+        else:
+            print('Ops! Não pode rolar esse dado! Escolha entre um d3, d6 ou d10!')
+            return self.Jogar()
 
-player1 = Jogador(0)
-player2 = Adversario(0)
-rodada = str(input('Você deseja jogar um dado (s/n)? '))
+        # Soma dos pontos e print dos resultados
+        self.pontos += dado 
+        print(f"Dados do {self.nome}: {dado}")
+        print(f"Pontos do {self.nome}: {self.pontos}")
 
-while rodada.upper() != 'SIM':
+class Computador(Jogador): 
+    def __init__(self):
+        super().__init__("Computador")
+    
+    def Jogar(self):
+        # ESTRATÉGIA DO COMPUTADOR PARA ESCOLHER OS DADOS
+        if self.pontos <=10:
+            dado = "d10"
+        
+        elif self.pontos <=15:
+            dado = "d6"
+        
+        else:
+            dado = 'd3'
+        
+        # ROLAGEM DE DADOS
+        if dado == 'd3':
+            dado = random.randint(1,3)
+
+        elif dado == 'd6':
+            dado = random.randint(1,6) 
+            
+        elif dado == 'd10':
+            dado = random.randint(1,10)
+
+        self.pontos += dado 
+        #print(f"\nDados do {self.nome}: {dado}")
+        #print(f"Pontos do {self.nome}: {self.pontos}\n")
+
+def main():
+    jogador = Jogador(input("Digite seu nome: "))
+    computador = Computador()
+
     rodada = str(input('Você deseja jogar um dado (s/n)? '))
 
-while rodada.upper() == "S":
-    player1.Jogar()
-    print('---------------------------------')
-    player2.Jogar()
+    while rodada.upper() != 'S':
+        rodada = str(input('Você deseja jogar um dado (s/n)? '))
 
-    if player1.pontosplayer > 21:
-        print('\nPC WINS!')
-        break
+    while rodada.upper() == "S":
+        jogador.Jogar()
+        print('---------------------------------')
+        computador.Jogar()
 
-    elif player1.pontosplayer == 21:
-        print('\nPLAYER WINS!')
-        break
+        if jogador.pontos > 21:
+            print('\nPC WINS!')
+            print('')
+            break
 
-    elif player2.pontospc > 21:
-        print('\nPLAYER WINS!')
-        break
+        elif jogador.pontos == 21:
+            print('\nPLAYER WINS!')
+            break
 
-    elif player2.pontospc == 21:
-        print('\nPC WINS!')
-        break
-    
-    # EM CASO DE EMPATE
-    elif player1.pontosplayer > 21 and player2.pontospc > 21:
-        if player2.pontospc == player1.pontosplayer:
-            print('EMPATE!')
-        elif player2.pontospc > player1:
-            print('PLAYER WINS!')
+        elif computador.pontos > 21:
+            print('\nPLAYER WINS!')
+            break
+
+        elif computador.pontos== 21:
+            print('\nPC WINS!')
+            break
+        
+        # EM CASO DE EMPATE
+        elif jogador.pontos > 21 and computador.pontospc > 21:
+            if computador.pontos == jogador.pontos:
+                print('EMPATE!')
+            elif computador.pontospc > jogador:
+                print('PLAYER WINS!')
+            else:
+                print('PC WINS!')
         else:
-            print('PC WINS!')
+            continue  # Se ninguém ganhou, continua o jogo
 
-    rodada = str(input('\nVocê deseja jogar um dado (s/n)? '))
+        # PONTUAÇÃO FINAL
+    print("\nPontuação Final:")
+    print(f"{jogador.nome}: {jogador.pontos} pontos")
+    print(f"Computador: {computador.pontos} pontos")  
 
-elif player2.pontospc == 21:
-    print('Você perdeu')
+if __name__ == "__main__":
+    main()
