@@ -1,18 +1,32 @@
 import random
+from colorama import Fore, Back, Style
+
+def desenhar_dado(valor: int):
+    dados = {
+        1: ["┌─────┐", "│     │", "│  ●  │", "│     │", "└─────┘"],
+        2: ["┌─────┐", "│ ●   │", "│     │", "│   ● │", "└─────┘"],
+        3: ["┌─────┐", "│ ●   │", "│  ●  │", "│   ● │", "└─────┘"],
+        4: ["┌─────┐", "│ ● ● │", "│     │", "│ ● ● │", "└─────┘"],
+        5: ["┌─────┐", "│ ● ● │", "│  ●  │", "│ ● ● │", "└─────┘"],
+        6: ["┌─────┐", "│ ● ● │", "│ ● ● │", "│ ● ● │", "└─────┘"],
+        7: ["    / \\", "   /   \\", "  /  7  \\", " /_______\\"],
+        8: ["    / \\", "   /   \\", "  /  8  \\", " /_______\\"],
+        9: ["    / \\", "   /   \\", "  /  9  \\", " /_______\\"],
+        10: ["    / \\", "   /   \\", "  / 10  \\", " /_______\\"]
+    }
+
+    for linha in dados[valor]:
+        print(Fore.WHITE + linha)
 
 class Jogador: # Classe Jogador
     def __init__(self, nome:str): # Atributo(s): pontos (pontos dp jogador)
         self.nome = nome
         self.pontos = 0
-        self.fichas = 5
-
-    def apostar(self):
-        bet = int(input('Quantas fichas você vai apostar? '))
 
     def Jogar(self): # Método Jogar do jogador
         # ROLAGEM DE DADOS
-        dado = input('Que dado desejas rolar (d3, d6 ou d10)? ')
-        if dado == 'd3':
+        dado = input('Que dado desejas rolar (d4, d6 ou d10)? ')
+        if dado == 'd4':
             dado = random.randint(1,3)
 
         elif dado == 'd6':
@@ -22,13 +36,14 @@ class Jogador: # Classe Jogador
             dado = random.randint(1,10)
 
         else:
-            print('Ops! Não pode rolar esse dado! Escolha entre um d3, d6 ou d10!')
+            print('Ops! Não pode rolar esse dado! Escolha entre um d4, d6 ou d10!')
             return self.Jogar()
 
         # Soma dos pontos e print dos resultados
         self.pontos += dado 
         print(f"Dados do {self.nome}: {dado}")
         print(f"Pontos do {self.nome}: {self.pontos}")
+        desenhar_dado(dado)
 
 class Computador(Jogador): 
     def __init__(self):
@@ -43,11 +58,11 @@ class Computador(Jogador):
             dado = "d6"
         
         else:
-            dado = 'd3'
+            dado = 'd4'
         
         # ROLAGEM DE DADOS
-        if dado == 'd3':
-            dado = random.randint(1,3)
+        if dado == 'd4':
+            dado = random.randint(1,4)
 
         elif dado == 'd6':
             dado = random.randint(1,6) 
