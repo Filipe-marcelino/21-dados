@@ -4,6 +4,10 @@ class Jogador: # Classe Jogador
     def __init__(self, nome:str): # Atributo(s): pontos (pontos dp jogador)
         self.nome = nome
         self.pontos = 0
+        self.fichas = 5
+
+    def apostar(self):
+        bet = int(input('Quantas fichas você vai apostar? '))
 
     def Jogar(self): # Método Jogar do jogador
         # ROLAGEM DE DADOS
