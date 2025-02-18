@@ -136,11 +136,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-        # PONTUAÇÃO FINAL
-    print("\nPontuação Final:")
-    print(f"{jogador.nome}: {jogador.pontos} pontos")
-    print(f"Computador: {computador.pontos} pontos")  
-
-if __name__ == "__main__":
-    main()
