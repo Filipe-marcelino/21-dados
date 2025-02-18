@@ -22,6 +22,13 @@ class Jogador: # Classe Jogador
     def __init__(self, nome:str): # Atributo(s): pontos (pontos dp jogador)
         self.nome = nome
         self.pontos = 0
+        self.fichas = 5
+
+    def apostar(self):
+        bet = int(input(f'Você tem {self.fichas} fichas.Quantas fichas você vai apostar? '))
+        while bet > self.fichas:
+            bet = int(input('Fichas insuficentes, tente novamente. '))
+        self.fichas = self.fichas - bet
 
     def Jogar(self): # Método Jogar do jogador
         # ROLAGEM DE DADOS
@@ -47,8 +54,14 @@ class Jogador: # Classe Jogador
 
 class Computador(Jogador): 
     def __init__(self):
+        self.fichaspc = 5
         super().__init__("Computador")
     
+
+    def pagar(self):
+        self.fichaspc = self.fichaspc - self.fichas
+        return ('Eu pago a aposta')
+
     def Jogar(self):
         # ESTRATÉGIA DO COMPUTADOR PARA ESCOLHER OS DADOS
         if self.pontos <=10:
@@ -115,6 +128,14 @@ def main():
                 print('PC WINS!')
         else:
             continue  # Se ninguém ganhou, continua o jogo
+
+        # PONTUAÇÃO FINAL
+    print("\nPontuação Final:")
+    print(f"{jogador.nome}: {jogador.pontos} pontos")
+    print(f"Computador: {computador.pontos} pontos")  
+
+if __name__ == "__main__":
+    main()
 
         # PONTUAÇÃO FINAL
     print("\nPontuação Final:")
