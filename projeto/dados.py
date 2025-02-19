@@ -25,10 +25,10 @@ class Jogador: # Classe Jogador
         self.fichas = 5
 
     def apostar(self):
-        bet = int(input(f'Você tem {self.fichas} fichas.Quantas fichas você vai apostar? '))
-        while bet > self.fichas:
-            bet = int(input('Fichas insuficentes, tente novamente. '))
-        self.fichas = self.fichas - bet
+        aposta = int(input(f'Você tem {self.fichas} fichas.Quantas fichas você vai apostar? '))
+        while aposta > self.fichas:
+            aposta = int(input('Fichas insuficentes, tente novamente. '))
+        self.fichas = self.fichas - aposta
 
     def Jogar(self): # Método Jogar do jogador
         # ROLAGEM DE DADOS
