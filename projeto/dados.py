@@ -91,48 +91,96 @@ def main():
     jogador = Jogador(input("Digite seu nome: "))
     computador = Computador()
 
-    rodada = str(input('Você deseja jogar um dado (s/n)? '))
-
-    while rodada.upper() != 'S':
+    posta = str(input('Você quer fazer uma aposta (s/n)? '))
+    if posta.upper() == 'S':
         rodada = str(input('Você deseja jogar um dado (s/n)? '))
 
-    while rodada.upper() == "S":
-        jogador.Jogar()
-        print('---------------------------------')
-        computador.Jogar()
+        while rodada.upper() != 'S':
+            rodada = str(input('Você deseja jogar um dado (s/n)? '))
 
-        if jogador.pontos > 21:
-            print('\nPC WINS!')
-            print('')
-            break
+        while rodada.upper() == "S":
+            jogador.apostar()
+            jogador.Jogar()
+            print('---------------------------------')
+            computador.pagar()
+            computador.Jogar()
 
-        elif jogador.pontos == 21:
-            print('\nPLAYER WINS!')
-            break
+            if jogador.pontos > 21:
+                computador.fichaspc = computador.fichaspc + 
+                print('\nPC WINS!')
+                print('')
+                break
 
-        elif computador.pontos > 21:
-            print('\nPLAYER WINS!')
-            break
+            elif jogador.pontos == 21:
+                print('\nPLAYER WINS!')
+                break
 
-        elif computador.pontos== 21:
-            print('\nPC WINS!')
-            break
-        
-        # EM CASO DE EMPATE
-        elif jogador.pontos > 21 and computador.pontospc > 21:
-            if computador.pontos == jogador.pontos:
-                print('EMPATE!')
-            elif computador.pontospc > jogador:
-                print('PLAYER WINS!')
+            elif computador.pontos > 21:
+                print('\nPLAYER WINS!')
+                break
+
+            elif computador.pontos== 21:
+                print('\nPC WINS!')
+                break
+            
+            # EM CASO DE EMPATE
+            elif jogador.pontos > 21 and computador.pontospc > 21:
+                if computador.pontos == jogador.pontos:
+                    print('EMPATE!')
+                elif computador.pontospc > jogador:
+                    print('PLAYER WINS!')
+                else:
+                    print('PC WINS!')
             else:
-                print('PC WINS!')
-        else:
-            continue  # Se ninguém ganhou, continua o jogo
+                continue  # Se ninguém ganhou, continua o jogo
 
-        # PONTUAÇÃO FINAL
-    print("\nPontuação Final:")
-    print(f"{jogador.nome}: {jogador.pontos} pontos")
-    print(f"Computador: {computador.pontos} pontos")  
+            # PONTUAÇÃO FINAL
+        print("\nPontuação Final:")
+        print(f"{jogador.nome}: {jogador.pontos} pontos")
+        print(f"Computador: {computador.pontos} pontos")  
+    else:
+        rodada = str(input('Você deseja jogar um dado (s/n)? '))
+
+        while rodada.upper() != 'S':
+            rodada = str(input('Você deseja jogar um dado (s/n)? '))
+
+        while rodada.upper() == "S":
+            jogador.Jogar()
+            print('---------------------------------')
+            computador.Jogar()
+
+            if jogador.pontos > 21:
+                print('\nPC WINS!')
+                print('')
+                break
+
+            elif jogador.pontos == 21:
+                print('\nPLAYER WINS!')
+                break
+
+            elif computador.pontos > 21:
+                print('\nPLAYER WINS!')
+                break
+
+            elif computador.pontos== 21:
+                print('\nPC WINS!')
+                break
+            
+            # EM CASO DE EMPATE
+            elif jogador.pontos > 21 and computador.pontospc > 21:
+                if computador.pontos == jogador.pontos:
+                    print('EMPATE!')
+                elif computador.pontospc > jogador:
+                    print('PLAYER WINS!')
+                else:
+                    print('PC WINS!')
+            else:
+                continue  # Se ninguém ganhou, continua o jogo
+
+            # PONTUAÇÃO FINAL
+        print("\nPontuação Final:")
+        print(f"{jogador.nome}: {jogador.pontos} pontos")
+        print(f"Computador: {computador.pontos} pontos")  
 
 if __name__ == "__main__":
     main()
