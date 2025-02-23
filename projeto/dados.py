@@ -19,10 +19,11 @@ def desenhar_dado(valor: int):
         print(Fore.WHITE + linha)
 
 class Jogador: # Classe Jogador
-    def __init__(self, nome:str): # Atributo(s): pontos (pontos dp jogador)
+    def __init__(self, nome:str,aposta): # Atributo(s): pontos (pontos dp jogador)
         self.nome = nome
         self.pontos = 0
         self.fichas = 5
+        self.aposta = aposta
 
     def apostar(self):
         aposta = int(input(f'Você tem {self.fichas} fichas.Quantas fichas você vai apostar? '))
@@ -59,7 +60,7 @@ class Computador(Jogador):
     
 
     def pagar(self):
-        self.fichaspc = self.fichaspc - self.fichas
+        self.fichaspc = self.fichaspc - self.fichas 
         return ('Eu pago a aposta')
 
     def Jogar(self):
@@ -106,20 +107,23 @@ def main():
             computador.Jogar()
 
             if jogador.pontos > 21:
-                computador.fichaspc = computador.fichaspc + 
+                computador.fichaspc = computador.fichaspc + (jogador.aposta*2)
                 print('\nPC WINS!')
                 print('')
                 break
 
             elif jogador.pontos == 21:
+                jogador.fichas = jogador.fichas + (jogador.aposta*2)
                 print('\nPLAYER WINS!')
                 break
 
             elif computador.pontos > 21:
+                jogador.fichas = jogador.fichas + (jogador.aposta*2)
                 print('\nPLAYER WINS!')
                 break
 
             elif computador.pontos== 21:
+                computador.fichaspc = computador.fichaspc + (jogador.aposta*2)
                 print('\nPC WINS!')
                 break
             
@@ -128,8 +132,10 @@ def main():
                 if computador.pontos == jogador.pontos:
                     print('EMPATE!')
                 elif computador.pontospc > jogador:
+                    jogador.fichas = jogador.fichas + (jogador.aposta*2)
                     print('PLAYER WINS!')
                 else:
+                    computador.fichaspc = computador.fichaspc + (jogador.aposta*2)
                     print('PC WINS!')
             else:
                 continue  # Se ninguém ganhou, continua o jogo
