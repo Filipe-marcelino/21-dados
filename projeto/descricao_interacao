@@ -1,10 +1,11 @@
 
-Para iniciar o jogo, o jogador deve digitar seu nome e, em seguida, deve confirmar se deseja jogar um dado (ainda iremos desenvolver o que acontece caso contrário).
+Para iniciar o jogo, o jogador deve digitar seu nome e, em seguida, deve confirmar se deseja jogar um dado (ainda iremos desenvolver
+o que acontece caso contrário).
 Uma vez que o jogo é iniciado, o jogador deve digitar qual tipo de dado deseja rolar (d4, d6 ou d10). Os resultados são salvos na pontuação do jogador.
 Simultaneamente, o computador também rola seus dados, sem que o jogador saiba seus resultados ou sua pontuação atual.
 Dessa forma, o jogo se encerra no momento em que um dos dois chega a 21 ou passa de 21. 
 
 EM DESENVOLVIMENTO:
-O jogador poderá escolher o modo de apostas (versão 02), onde ele e o computador apostam sua vitória com fichas e, ao depender dos resultados, ganham ou perdem
-suas fichas para o outro. O jogador pode escolher quantas rodadas de aposta ele deseja jogar e ganha aquele que, ao fim das rodadas, possuir mais fichas.
+O jogador poderá escolher o modo de apostas (versão 02), onde ele e o computador apostam sua vitória com fichas e, ao depender dos resultados, ganham ou
+perdem suas fichas para o outro. O jogador pode escolher quantas rodadas de aposta ele deseja jogar e ganha aquele que, ao fim das rodadas, possuir mais fichas.
 
