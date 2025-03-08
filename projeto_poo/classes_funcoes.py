@@ -53,7 +53,7 @@ class Jogador: # Classe Jogador
             dado = random.randint(1,10)
 
         else:
-            print('Ops! Você pode rolar esse dado... 😕')
+            print('Ops! Você não pode rolar esse dado... 😕')
             return self.Jogar_dado()
 
         # Soma dos pontos e print dos resultados
